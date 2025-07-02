@@ -16,9 +16,9 @@
 #include "output.h"
 
 #ifdef __STDC__
-int getline (int key)
+int acdc_getline (int key)
 #else
-int getline (key)
+int acdc_getline (key)
 int key;
 #endif
 {

@@ -249,7 +249,7 @@ void domajor ()
                   value = LAST_DEFAULT_FLAG;
             }
             line_status = EOL;
-            if ((line_status = getline (IGNORE_BLANK)) == EOF)
+            if ((line_status = acdc_getline (IGNORE_BLANK)) == EOF)
                return;
             if (*line_ptr != ' ' && *line_ptr != '\t')
                (void) gripe ("", "FLAGS directive has no flag declarations!");
@@ -299,7 +299,7 @@ void domajor ()
             while (tp [++index] != NULL)
                (void) addsymb (SYMBOL, tp [index], major_type, value);
             line_status = EOL;
-            if ((line_status = getline (IGNORE_BLANK)) == EOF)
+            if ((line_status = acdc_getline (IGNORE_BLANK)) == EOF)
                return;
             if (*line_ptr != ' ' && *line_ptr != '\t')
                break;
@@ -364,7 +364,7 @@ void domajor ()
          np = addsymb (SYMBOL, tp [1], TEXT, type_counts [TEXT]++);
          np -> body.text.name_addr = next_addr; /* Sort of "name" */
          line_status = EOL;
-         (void) gettext (0, &(np -> state_count), major_type == FRAGMENT);
+         (void) acdc_gettext (0, &(np -> state_count), major_type == FRAGMENT);
          np -> body.text.text_type = type;
          return;          /* preserve the BOL line_status! */
 

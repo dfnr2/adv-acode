@@ -93,7 +93,7 @@ void dominor ()
    while (TRUE)
    {
       line_status = EOL;
-      if (getline (IGNORE_BLANK) == EOF)
+      if (acdc_getline (IGNORE_BLANK) == EOF)
          goto terminate;
       line_ptr = line;
       if (*line_ptr != ' ' && *line_ptr != '\t')

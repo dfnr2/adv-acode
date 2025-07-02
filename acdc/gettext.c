@@ -29,9 +29,9 @@
 #include "text.h"
 
 #ifdef __STDC__
-int gettext (int description, int *max_states, int fragment)
+int acdc_gettext (int description, int *max_states, int fragment)
 #else
-int gettext (description, max_states, fragment)
+int acdc_gettext (description, max_states, fragment)
 int description;
 int *max_states;
 int fragment;
@@ -69,7 +69,7 @@ int fragment;
 
 next_line:
 
-   if (getline(ACCEPT_BLANK) == EOF)
+   if (acdc_getline(ACCEPT_BLANK) == EOF)
       (void) gripe ("EOF","Unexpected end of source.");
 
    if (*line_ptr != ' ' && *line_ptr != '\t' && *line_ptr != '\n')

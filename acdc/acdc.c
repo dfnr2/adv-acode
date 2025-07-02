@@ -158,7 +158,7 @@ int main (argc, argv)
 
    while (line_status != EOF)
    {
-      if ((line_status = getline (IGNORE_BLANK)) == EOF)
+      if ((line_status = acdc_getline (IGNORE_BLANK)) == EOF)
          break;
       (void) domajor ();     /* line_status changes here! */
    }

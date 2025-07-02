@@ -1,4 +1,4 @@
-CC = cc
+CC = /opt/local/bin/gcc
 ifdef DEBUG
    CFLAGS = -g -DDEBUG
 else

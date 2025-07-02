@@ -37,7 +37,7 @@
 #include "source.h"
 
 int node_count;
-int text_count;
+extern int text_count;
 int desc_count;
 long *text_info;
 long *text_base;

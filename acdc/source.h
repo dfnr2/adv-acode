@@ -15,7 +15,7 @@
 #include "const.h"
 #endif
 
-#if defined(unix) || defined(__CYGWIN__)
+#if defined(unix) || defined(__CYGWIN__) || defined(__APPLE__) || defined(__MACH__)
 #  define SEP '/'
 #else
 #  if defined(MSDOS) || defined (_WIN32_)
