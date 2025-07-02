@@ -1,0 +1,84 @@
+         Some notes on the Dave Platt's A-code source of adv550
+                       (the 18 Sep 1984 version)
+
+                       Mike Arnautov, 04 Nov 2001
+
+The only change I had to make to DP's A-code to make it work with my
+A-code engine (version 11), was to move the block of DEFINE statements
+from where it was (between the AT and the ACTION sections) to between
+the VARIABLE and the LABEL sections. The current engine expects all purely
+declarative statements to precede any code, and the LABEL section in the
+adv550 code is the first to specify code.
+
+The NEWS text mentions cave maps being available from Dave Platt at
+Honeywell in L.A. The address is presumably obsolete, but I leave it in
+for historical reasons. Following the lead of the Ken Welsch C bundle,
+based on a simplified (earlier?) version of adv550 A-code source, I am
+providing the maps as a part of this bundle. 
+
+When processing DP's A-code source with a tool fussier than Dave's A-code
+"munger", a number of declarations are identified as redundant. Here is
+a summary of all such declarations.
+
+The below texts are not used. I do not know whether they represent
+abandoned expansion plans by DP, but most of them were subsequently used
+by me when merging adv440 and adv550 into adv660.
+
+TEXT     IAMUNSURE
+TEXT     CANTAPPLY
+TEXT     NOCANLOOK
+TEXT     WMEANSWEST
+TEXT     BESERIOUS
+TEXT     CANTLOCKIT
+TEXT     ITWASLOCKED
+TEXT     WASUNLOCKED
+TEXT     WHERE?
+TEXT     GRATENEEDSKEYS
+TEXT     INFOREST
+TEXT     NEEDDYNAMITE
+TEXT     FEETAREWET
+TEXT     CANTPOUR
+TEXT     WATCHIT
+TEXT     QUIT.NOW?
+TEXT     START.OVER
+TEXT     ON.WHAT?
+TEXT     THIS.IS.A.CLUE
+TEXT     UNCHANGED
+TEXT     I.DONT.UNDERSTAND
+TEXT     SHATTER.MIRROR
+TEXT     CANT.READ.OYSTER
+TEXT     OYSTER.IS.BARE
+
+Texts in the below group are also unused. It would seem that DP did
+not remove them when removing playing restrictions.
+
+TEXT     ETMF.TOO.HIGH
+TEXT     TOO.MANY.USERS
+TEXT     RESTORE.ETMF
+TEXT     RESTORE.USERS
+
+The following five texts may appear to be not used, but only their names
+are not. The texts themselves are used as anonymous texts, via an offset
+from a previous text. (They really ought to be declared as anonymous.)
+
+TEXT     NEW.EFFECT
+TEXT     PLUMMET1
+TEXT     PLUMMET2
+TEXT     PLUMMET3
+TEXT     SO.YOU.ARE
+
+Finally, there is a symbolic constant, a variable and a procedure, which
+are not used. In the case of the CLOSE.CREDIT constant, the code simply
+hard-wires the value of 20, instead of using the symbolic constant.
+
+SYNON    20,CLOSE.CREDIT         Definition not used
+VARIABLE EXPLODE.THE.WELLHOUSE   Variable not used
+LABEL    READ.MACHINE            Procedure not used
+
+
+
+
+                                        Mike Arnautov
+                                        mla@britishlibrary.net
+                                        04 Nov 2001
+
