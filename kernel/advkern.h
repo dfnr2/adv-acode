@@ -30,6 +30,7 @@ extern int anyof (int first, ...);
 extern int keyword (int first, ...);
 extern void move (int a1, int a2, ...);
 extern void tie (int text, int holder);
+extern void svar (int type, int var);
 #else
 extern void say ();
 extern int query ();
@@ -59,6 +60,7 @@ extern int anyof ();
 extern int keyword ();
 extern void move ();
 extern void tie ();
+extern void svar ();
 #endif
 extern jmp_buf loop_back;
 extern int value[];

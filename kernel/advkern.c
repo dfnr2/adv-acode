@@ -128,6 +128,10 @@
 #include <unistd.h>
 #endif
 
+#if defined(unix) || defined(__APPLE__) || defined(__linux__)
+#include <unistd.h>
+#endif
+
 /* extern void *malloc(); */
 
 #if defined(unix) || defined(linux) || defined(vms) || defined(__50SERIES) || defined (_WIN32) || defined (__CYGWIN__)
@@ -1659,7 +1663,12 @@ int insize;
 #  ifdef GLK
             glkgets (inbuf, insize);
 #  else
-            fgets (inbuf, insize, stdin);
+            if (fgets (inbuf, insize, stdin) == NULL)
+            {
+               /* EOF encountered - exit gracefully */
+               puts ("\n");
+               exit (0);
+            }
 #  endif
 #endif /* READLINE */
             break;
@@ -1684,7 +1693,12 @@ int insize;
 #  ifdef GLK
       glkgets (inbuf, insize);
 #  else
-      fgets (inbuf, insize, stdin);
+      if (fgets (inbuf, insize, stdin) == NULL)
+      {
+         /* EOF encountered - exit gracefully */
+         puts ("\n");
+         exit (0);
+      }
 #  endif
 #endif /* READLINE */
 #ifdef CONTEXT
@@ -1728,7 +1742,12 @@ int clear;
       while (need--)
          putchar (' ');
       PRINTF2 ("[More?] ", 0);
-      fgets (reply, sizeof (reply) - 1, com_file ? com_file : stdin);
+      if (fgets (reply, sizeof (reply) - 1, com_file ? com_file : stdin) == NULL)
+      {
+         /* EOF encountered - exit gracefully */
+         puts ("\n");
+         exit (0);
+      }
       if (log_file)
          fprintf (log_file, "\nREPLY: %s", reply);
       lincnt = 1;
@@ -3381,7 +3400,11 @@ int initialise ()
    }
    if (com_file)
    {
-      fgets (comline, sizeof (comline), com_file);
+      if (fgets (comline, sizeof (comline), com_file) == NULL)
+      {
+         printf ("%s: unexpected end of command file!\n", com_name);
+         exit (0);
+      }
       if (strncmp (comline, DBNAME, strlen (DBNAME)) != 0)
       {
          printf ("%s: wrong adventure version!", com_name);
